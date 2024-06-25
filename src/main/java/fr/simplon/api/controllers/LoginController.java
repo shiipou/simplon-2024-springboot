@@ -1,16 +1,10 @@
 package fr.simplon.api.controllers;
 
 import java.util.InputMismatchException;
-import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.simplon.api.models.User;
@@ -19,11 +13,14 @@ import fr.simplon.api.repositories.UserRepository;
 @RestController
 public class LoginController {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+
+    public LoginController(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @PostMapping("/login")
-    public Optional<User> createUser(
+    public Optional<User> login(
         @ModelAttribute("username") String username,
         @ModelAttribute("password") String password
     ) {
@@ -31,7 +28,7 @@ public class LoginController {
     }
 
     @PostMapping("/register")
-    public User createUser(
+    public User register(
         @ModelAttribute("username") String username,
         @ModelAttribute("password") String password,
         @ModelAttribute("passwordConfirm") String passwordConfirm,

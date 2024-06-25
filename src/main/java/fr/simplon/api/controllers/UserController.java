@@ -3,9 +3,7 @@ package fr.simplon.api.controllers;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,10 +17,13 @@ import fr.simplon.api.repositories.UserRepository;
 @RequestMapping("/api/users")
 public class UserController {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    @GetMapping("/")
+    public UserController(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    @GetMapping
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
@@ -32,7 +33,7 @@ public class UserController {
         return userRepository.findById(userId);
     }
 
-    @PostMapping("/")
+    @PostMapping
     public User createUser(@RequestBody User user) {
         User newUser = new User(user.getUsername());
         return userRepository.save(newUser);

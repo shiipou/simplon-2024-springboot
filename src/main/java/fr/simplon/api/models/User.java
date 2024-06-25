@@ -18,7 +18,7 @@ import lombok.RequiredArgsConstructor;
 @Table(name = "users")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @Column(nullable = false, unique = true)
@@ -26,9 +26,9 @@ public class User {
     private String username;
 
     private String name;
-    private String email;
     @JsonIgnore
     private String password;
+    private String email;
 
     public User(){}
 }
