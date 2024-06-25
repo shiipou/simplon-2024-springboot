@@ -26,11 +26,18 @@ classDiagram
     class Card {
         -Integer id
         -DateTime creationDate
-        -List<Product> products
+        -Map<Product, Integer> products
     }
     class Order {
         -Integer id
         -DateTime creationDate
-        -List<Product> products
+        -List<ProductRow> products
+    }
+    class ProductRow {
+        -Integer id
+        -Product product
+        -Integer quantity
+        -Float price
+        -Float discount
     }
 ```
