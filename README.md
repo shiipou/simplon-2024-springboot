@@ -6,11 +6,16 @@
 
 ### Understanding the class diagram :
 
-```mermaidjs
-classDiagram:
+```mermaid
+classDiagram
+    User --> Card
+    Card <--> Product
+    Order <--> Product
+    User --> Order
+    
     class User {
-        -Integer id
-        -String username
+      -Integer id
+      -String username
     }
     class Product {
         -Integer id
