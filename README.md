@@ -12,7 +12,7 @@ classDiagram
     Card <--> Product
     Order <--> Product
     User --> Order
-    Order --> ProductRow
+    Order "1"-->"1..*" ProductRow
     
     class User {
       -Integer id
