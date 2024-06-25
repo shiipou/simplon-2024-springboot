@@ -1,0 +1,174 @@
+{
+  "info": {
+    "name": "simplon-2024-springboot",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "bruno",
+      "event": []
+    },
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "findAllUsers",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/api/users",
+              "host": [],
+              "path": [],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "CreateUser",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/api/users",
+              "host": [],
+              "path": [],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"username\": \"shiipou\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "findById",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/api/users/1",
+              "host": [],
+              "path": [],
+              "query": [],
+              "variable": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "security",
+      "item": [
+        {
+          "name": "register",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/register",
+              "host": [],
+              "path": [],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "username",
+                  "value": "{{user_login}}",
+                  "disabled": false,
+                  "type": "default"
+                },
+                {
+                  "key": "password",
+                  "value": "{{user_pass}}",
+                  "disabled": false,
+                  "type": "default"
+                },
+                {
+                  "key": "passwordConfirm",
+                  "value": "{{user_pass}}",
+                  "disabled": false,
+                  "type": "default"
+                },
+                {
+                  "key": "email",
+                  "value": "{{user_email}}",
+                  "disabled": false,
+                  "type": "default"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "login",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/login",
+              "host": [],
+              "path": [],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "username",
+                  "value": "{{user_login}}",
+                  "disabled": false,
+                  "type": "default"
+                },
+                {
+                  "key": "password",
+                  "value": "{{user_pass}}",
+                  "disabled": false,
+                  "type": "default"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "host",
+      "value": "",
+      "type": "default"
+    },
+    {
+      "key": "user_login",
+      "value": "",
+      "type": "default"
+    },
+    {
+      "key": "user_pass",
+      "value": "",
+      "type": "default"
+    },
+    {
+      "key": "user_email",
+      "value": "",
+      "type": "default"
+    }
+  ]
+}
