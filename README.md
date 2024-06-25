@@ -8,7 +8,7 @@
 
 ```mermaid
 classDiagram
-    User --> Card
+    User "1"-->"0..*" Card
     Card <--> Product
     Order <--> Product
     User --> Order
@@ -16,6 +16,7 @@ classDiagram
     class User {
       -Integer id
       -String username
+      +User getUsername()
     }
     class Product {
         -Integer id
