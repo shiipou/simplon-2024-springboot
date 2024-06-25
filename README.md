@@ -8,7 +8,7 @@
 
 ```mermaid
 classDiagram
-    User "1"-->"0..*" Card
+    User "1"-->"0..*" Card : has
     Card <--> Product
     Order <--> Product
     User --> Order
