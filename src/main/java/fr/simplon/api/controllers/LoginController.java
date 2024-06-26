@@ -3,10 +3,13 @@ package fr.simplon.api.controllers;
 import java.util.InputMismatchException;
 import java.util.Optional;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
+import fr.simplon.api.Exceptions.InvalidCredentialException;
 import fr.simplon.api.models.User;
 import fr.simplon.api.repositories.UserRepository;
 
@@ -20,11 +23,14 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public Optional<User> login(
+    public User login(
         @ModelAttribute("username") String username,
         @ModelAttribute("password") String password
-    ) {
-        return userRepository.findByUsernameAndPassword(username, password);
+    ) throws InvalidCredentialException {
+        return userRepository.findByUsernameAndPassword(username, password).orElseThrow(
+            () -> new InvalidCredentialException("Check your credentials")
+            // () -> new ResponseStatusException(HttpStatus.UNAUTHORIZED)
+        );
     }
 
     @PostMapping("/register")
