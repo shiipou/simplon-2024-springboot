@@ -1,0 +1,19 @@
+meta {
+  name: CreateBook
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{host}}/api/books
+  body: json
+  auth: none
+}
+
+body:json {
+  { 
+    "name": "Java pour les nuls",
+    "author": 102
+  }
+  
+}

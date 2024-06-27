@@ -30,7 +30,7 @@ public class UserController {
 
     @GetMapping("/{userId}")
     public Optional<User> getAllUsers(@PathVariable Integer userId) {
-        return userRepository.findById(userId).orElseThrow(()->);
+        return userRepository.findById(userId);
     }
 
     @PostMapping
